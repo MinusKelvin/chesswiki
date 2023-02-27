@@ -1,0 +1,31 @@
+---
+title: Search
+hidden: true
+permalink: /search.html
+---
+<script src="https://cdn.jsdelivr.net/npm/fuzzysort@2.0.4/fuzzysort.min.js"></script>
+<div id="results" class="link-list"></div>
+<script>
+const pages = [
+{% for page in site.pages %}
+    {% unless page.hidden %}
+{
+    title: "{{ page.title }}",
+    url: "{{ page.url | relative_url }}",
+},
+    {% endunless %}
+{% endfor %}
+]
+
+const query = new URL(window.location).searchParams.get("q").toLowerCase()
+const results = fuzzysort.go(query, pages, {key: "title"})
+
+const out = document.getElementById("results")
+for (const result of results) {
+    let a = document.createElement("a")
+    a.href = result.obj.url
+    a.append(result.obj.title)
+    out.append(a)
+}
+
+</script>

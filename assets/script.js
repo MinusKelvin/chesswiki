@@ -1,0 +1,39 @@
+document.addEventListener("DOMContentLoaded", () => {
+    let toc = document.getElementById("toc")
+    let stack = [toc]
+    for (const child of document.getElementById("content-div").children) {
+        let match = child.tagName.match(/H(\d)/)
+        if (match !== null) {
+            let hnum = parseInt(match[1])
+            while (stack.length > hnum) {
+                stack.pop()
+            }
+            while (stack.length < hnum) {
+                let block = document.createElement("div")
+                stack[stack.length-1].append(block)
+                stack.push(block)
+            }
+            let link = document.createElement("a")
+            link.href = "#" + child.id
+            link.append(child.textContent)
+            stack[stack.length-1].append(link)
+        }
+    }
+
+    let content = document.getElementById("content-pane")
+    document.querySelectorAll("a[href^='#']").forEach(link => {
+        let href = link.getAttribute("href");
+        if (href !== "#") {
+            let target = document.querySelector(href)
+            link.addEventListener("click", e => {
+                e.preventDefault()
+                let top = target.getBoundingClientRect().top + content.scrollTop;
+                let margin = parseInt(getComputedStyle(target).marginTop)
+                content.scrollTo({
+                    top: Math.round(top - margin),
+                    behavior: "smooth",
+                })
+            })
+        }
+    })
+})
