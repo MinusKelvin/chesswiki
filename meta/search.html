@@ -4,28 +4,42 @@ hidden: true
 permalink: /search.html
 ---
 <script src="https://cdn.jsdelivr.net/npm/fuzzysort@2.0.4/fuzzysort.min.js"></script>
-<div id="results" class="link-list"></div>
+<ul id="results" class="vertical-links"></ul>
 <script>
 const pages = [
-{% for page in site.pages %}
-    {% unless page.hidden %}
+{%- for page in site.pages -%}
+{%- unless page.hidden %}
 {
     title: "{{ page.title }}",
+    desc: "{{ page.content | strip_html | split: "." | first }}.",
     url: "{{ page.url | relative_url }}",
 },
-    {% endunless %}
-{% endfor %}
+{%- endunless -%}
+{%- endfor -%}
 ]
 
 const query = new URL(window.location).searchParams.get("q").toLowerCase()
-const results = fuzzysort.go(query, pages, {key: "title"})
+
+for (const page of pages) {
+    if (page.title.toLowerCase() == query.toLowerCase()) {
+        window.location = page.url
+        break
+    }
+}
+
+const results = fuzzysort.go(query, pages, {keys: ["title", "desc"]})
 
 const out = document.getElementById("results")
 for (const result of results) {
+    let li = document.createElement("li")
     let a = document.createElement("a")
     a.href = result.obj.url
-    a.append(result.obj.title)
-    out.append(a)
+    a.innerHTML = fuzzysort.highlight(result[0]) || result.obj.title
+    li.append(a)
+    let p = document.createElement("p")
+    p.innerHTML = fuzzysort.highlight(result[1]) || result.obj.desc
+    li.append(p)
+    out.append(li)
 }
 
 </script>

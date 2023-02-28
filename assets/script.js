@@ -9,14 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 stack.pop()
             }
             while (stack.length < hnum) {
-                let block = document.createElement("div")
+                let block = document.createElement("ul")
                 stack[stack.length-1].append(block)
                 stack.push(block)
             }
             let link = document.createElement("a")
             link.href = "#" + child.id
             link.append(child.textContent)
-            stack[stack.length-1].append(link)
+            let li = document.createElement("li")
+            li.append(link)
+            stack[stack.length-1].append(li)
         }
     }
 

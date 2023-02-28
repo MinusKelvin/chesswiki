@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/code.css" | relative_url }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="{{ "/assets/script.js" | relative_url }}"></script>
 </head>
@@ -17,20 +18,24 @@
                     <input type="search" name="q" placeholder="Search...">
                 </form>
                 <h3>Contents</h3>
-                <div id="toc" class="link-list">
-                </div>
+                <ul id="toc" class="vertical-links"></ul>
                 <h3>Site Nav</h3>
-                <div class="link-list">
-                    <a href="{{ '/' | relative_url }}">Main Page</a>
-                    <a href="{{ '/all.html' | relative_url }}">All Pages</a>
-                </div>
+                <ul class="vertical-links">
+                    <li><a href="{{ '/' | relative_url }}">Main Page</a></li>
+                    <li><a href="{{ '/all.html' | relative_url }}">All Pages</a></li>
+                </ul>
             </div>
         </div>
     </div>
     <div id="content-pane" class="section">
-        <div id="content-div" class="content">
-            <h1 id="top">{{ page.title }}</h1>
-            {{ content }}
+        <div>
+            <div id="content-div" class="content">
+                <h1 id="top">{{ page.title }}</h1>
+                {{ content }}
+            </div>
+        </div>
+        <div id="footer" class="horizontal-links">
+            <a href="https://github.com/MinusKelvin/chesswiki/blob/main/{{ page.path }}">View this page on GitHub</a>
         </div>
     </div>
 </body>

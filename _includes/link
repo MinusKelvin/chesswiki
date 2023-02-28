@@ -1,0 +1,2 @@
+{% assign p = site.pages | where: "path", include.to | first %}
+[{{ p.title }}]({% link {{ include.to }} %})

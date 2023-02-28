@@ -32,7 +32,6 @@ defaults:
 markdown: kramdown
 kramdown:
   header_offset: 1
-  syntax_highlighter: coderay
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
