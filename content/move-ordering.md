@@ -1,7 +1,7 @@
 ---
 title: Move Ordering
 ---
-Move ordering has a large impact on the efficiency of an [alpha-beta]({% link content/alpha-beta.md %}) search.
+Move ordering has a large impact on the efficiency of an {% include link to="content/alpha-beta.md" text="alpha-beta" %} search.
 If the refutation is the last move searched, then alpha-beta will search the same number of nodes as minimax.
 However, if a refutation is searched before any other moves, then alpha-beta can eliminate all of the sibling subtrees and complete very quickly.
 

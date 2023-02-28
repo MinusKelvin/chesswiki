@@ -7,11 +7,11 @@ permalink: /search.html
 <ul id="results" class="vertical-links"></ul>
 <script>
 const pages = [
-{%- for page in site.pages -%}
+{%- for page in site.html_pages -%}
 {%- unless page.hidden %}
 {
     title: "{{ page.title }}",
-    desc: "{{ page.content | strip_html | split: "." | first }}.",
+    desc: "{{ page.content | strip_html | split: "." | first | normalize_whitespace }}.",
     url: "{{ page.url | relative_url }}",
 },
 {%- endunless -%}
