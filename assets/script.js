@@ -22,16 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    let content = document.getElementById("content-pane")
     document.querySelectorAll("a[href^='#']").forEach(link => {
         let href = link.getAttribute("href");
         if (href !== "#") {
             let target = document.querySelector(href)
             link.addEventListener("click", e => {
                 e.preventDefault()
-                let top = target.getBoundingClientRect().top + content.scrollTop;
+                let top = target.getBoundingClientRect().top + window.scrollY;
                 let margin = parseInt(getComputedStyle(target).marginTop)
-                content.scrollTo({
+                window.scrollTo({
                     top: Math.round(top - margin),
                     behavior: "smooth",
                 })

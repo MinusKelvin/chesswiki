@@ -11,23 +11,21 @@
 <body>
     <div id="nav">
         <a id="sidebar-collapse" href="#" onclick="document.getElementById('nav').classList.toggle('shown')"></a>
-        <div class="section">
-            <div class="content">
-                <h3>{{ site.title }}</h3>
-                <form action="{{ "/search.html" | relative_url }}">
-                    <input type="search" name="q" placeholder="Search...">
-                </form>
-                <h3>Contents</h3>
-                <ul id="toc" class="vertical-links"></ul>
-                <h3>Site Nav</h3>
-                <ul class="vertical-links">
-                    <li><a href="{{ '/' | relative_url }}">Main Page</a></li>
-                    <li><a href="{{ '/all.html' | relative_url }}">All Pages</a></li>
-                </ul>
-            </div>
+        <div class="content">
+            <h3>{{ site.title }}</h3>
+            <form action="{{ "/search.html" | relative_url }}">
+                <input type="search" name="q" placeholder="Search...">
+            </form>
+            <h3>Contents</h3>
+            <ul id="toc" class="vertical-links"></ul>
+            <h3>Site Nav</h3>
+            <ul class="vertical-links">
+                <li><a href="{{ '/' | relative_url }}">Main Page</a></li>
+                <li><a href="{{ '/all.html' | relative_url }}">All Pages</a></li>
+            </ul>
         </div>
     </div>
-    <div id="content-pane" class="section">
+    <div id="content-pane">
         <div>
             <div id="content-div" class="content">
                 <h1 id="top">{{ page.title }}</h1>
