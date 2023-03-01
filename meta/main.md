@@ -6,7 +6,8 @@ categories:
 ---
 Welcome to MinusKelvin's **Computer Chess Wiki**.
 This wiki is dedicated to the documentation of all aspects of chess engine development, and seeks to replace the unmaintained [Chess Programming Wiki][cpw].
-Contributions are greatly appreciated and can be made by opening a pull request on [the repository][chesswiki-gh].
+Contributions are greatly appreciated.
+See {% include link to="meta/contributing.md" %} for more information.
 
 # Search Algorithms
 

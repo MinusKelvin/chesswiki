@@ -30,6 +30,10 @@ defaults:
 markdown: kramdown
 kramdown:
   header_offset: 1
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

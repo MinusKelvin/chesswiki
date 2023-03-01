@@ -1,2 +1,12 @@
-{% assign p = site.pages | where: "path", include.to | first -%}
-[{{ include.text | default: p.title }}]({{ p.url | relative_url }})
+{%- assign p = site.pages | where: "path", include.to | first -%}
+{%- if p -%}
+    {%- if include.lowercase -%}
+        {%- assign default_txt = p.title | downcase -%}
+    {%- else -%}
+        {%- assign default_txt = p.title -%}
+    {%- endif -%}
+    [{{ include.text | default: default_txt }}]({{ p.url | relative_url }})
+{%- else -%}
+    {%- assign txt = include.to | split: "/" | last | split: "." | first -%}
+    <a class="redlink" href="{{ "/contributing.html" | relative_url }}">{{ include.text | default: txt }}</a>
+{%- endif -%}

@@ -1,12 +1,11 @@
 ---
 title: Alpha-Beta
-see-also:
-  - content/move-ordering.md
 ---
 
 **Alpha-beta** pruning is an improvement over the basic minimax algorithm which produces the same result but performs substantially less work.
 It does this by tracking the best value each player is assured of in alternative lines of play.
 If a move is to provide a better value than what the opponent will allow, then the line has been *refuted* and there is no need to search the remaining moves.
+Because of this, alpha-beta benefits greatly from good {% include link to="content/move-ordering.md" lowercase=true %} heuristics.
 
 # Description
 
@@ -14,7 +13,7 @@ Alpha-beta is a recursive algorithm which augments the `min_player` and `max_pla
 These parameters represent the best values that the maximizing and minimizing players are known to have in some other line of play, respectively.
 When searching the root node of the game tree with alpha-beta, `alpha` and `beta` start at `-INF` and `+INF` respectively.
 
-{% highlight python linenos %}
+```py
 def alpha_beta_max_player(state, alpha, beta):
     best = -INF
     for move in state.generate_moves():
@@ -36,7 +35,7 @@ def alpha_beta_min_player(state, alpha, beta):
         if value <= alpha:
             break
     return best
-{% endhighlight %}
+```
 
 If we find a move which is better than `alpha`/`beta`, we set `alpha`/`beta` to it (line 7/18) as that player is assured that they can get that value by playing that move.
 However, if we find a move which is so good that its value exceeds `beta`/`alpha` (line 8/19), then the opponent would have preferred to play a different move earlier in the game.
@@ -58,14 +57,14 @@ If the true minimax value of the position is denoted by `v` and the return value
 
 In zero-sum games such as chess, we can use the fact that the value of a position to a player is precisely the negation of the value of that position to their opponent to implement the minimizing player's search function in terms of the maximizing player's search function:
 
-{% highlight python linenos %}
+```py
 def alpha_beta_min_player(state, alpha, beta):
     return -alpha_beta_max_player(state, -beta, -alpha)
-{% endhighlight %}
+```
 
 This is often not written as a separate function but instead inlined directly into the search:
 
-{% highlight python linenos %}
+```py
 def alpha_beta_negamax(state, alpha, beta):
     best = -INF
     for move in state.generate_moves():
@@ -76,7 +75,7 @@ def alpha_beta_negamax(state, alpha, beta):
         if value >= beta:
             break
     return best
-{% endhighlight %}
+```
 
 # See Also
 

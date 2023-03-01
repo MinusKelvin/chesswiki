@@ -11,18 +11,20 @@
 <body>
     <div id="nav">
         <a id="sidebar-collapse" href="#" onclick="document.getElementById('nav').classList.toggle('shown')"></a>
-        <div class="content">
-            <h3>{{ site.title }}</h3>
-            <form action="{{ "/search.html" | relative_url }}">
-                <input type="search" name="q" placeholder="Search...">
-            </form>
-            <h3>Contents</h3>
-            <ul id="toc" class="vertical-links"></ul>
-            <h3>Site Nav</h3>
-            <ul class="vertical-links">
-                <li><a href="{{ '/' | relative_url }}">Main Page</a></li>
-                <li><a href="{{ '/all.html' | relative_url }}">All Pages</a></li>
-            </ul>
+        <div>
+            <div class="content">
+                <h3>{{ site.title }}</h3>
+                <form action="{{ "/search.html" | relative_url }}">
+                    <input type="search" name="q" placeholder="Search...">
+                </form>
+                <h3>Contents</h3>
+                <ul id="toc" class="vertical-links"></ul>
+                <h3>Site Nav</h3>
+                <ul class="vertical-links">
+                    <li><a href="{{ '/' | relative_url }}">Main Page</a></li>
+                    <li><a href="{{ '/all.html' | relative_url }}">All Pages</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div id="content-pane">
@@ -33,7 +35,7 @@
             </div>
         </div>
         <div id="footer" class="horizontal-links">
-            <a href="https://github.com/MinusKelvin/chesswiki/blob/main/{{ page.path }}">View this page on GitHub</a>
+            <a href="https://github.com/MinusKelvin/chesswiki/blob/main/{{ page.path }}?plain=1">View this page on GitHub</a>
         </div>
     </div>
 </body>
