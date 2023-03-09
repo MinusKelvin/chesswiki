@@ -2,7 +2,7 @@
 title: Minimax
 ---
 
-**Minimax** is the decision-making principle of minimizing the maximum possible loss, which in adversarial, deterministic, perfect-information, zero-sum games such as Chess is the [Nash Equilibrium](https://en.wikipedia.org/wiki/Nash_equilibrium) (optimal play).
+**Minimax** is the decision-making principle of minimizing the maximum possible loss, which in adversarial, deterministic, perfect-information, zero-sum games such as Chess is the {% include link to="https://en.wikipedia.org/wiki/Nash_equilibrium" text="Nash Equilibrium" %} (optimal play).
 Additionally, the zero-sum property allows for a simplification called [negamax](#negamax).
 
 # Description

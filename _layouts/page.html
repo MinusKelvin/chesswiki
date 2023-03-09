@@ -35,7 +35,10 @@
             </div>
         </div>
         <div id="footer" class="horizontal-links">
-            <a href="https://github.com/MinusKelvin/chesswiki/blob/main/{{ page.path }}?plain=1">View this page on GitHub</a>
+            {%- capture ghurl -%}
+                https://github.com/MinusKelvin/chesswiki/blob/main/{{ page.path }}?plain=1
+            {%- endcapture -%}
+            {% include link to=ghurl text="View this page on GitHub" %}
         </div>
     </div>
 </body>

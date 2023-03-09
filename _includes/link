@@ -1,12 +1,17 @@
-{%- assign p = site.pages | where: "path", include.to | first -%}
-{%- if p -%}
-    {%- if include.lowercase -%}
-        {%- assign default_txt = p.title | downcase -%}
-    {%- else -%}
-        {%- assign default_txt = p.title -%}
-    {%- endif -%}
-    <a href="{{ p.url | relative_url }}">{{ include.text | default: default_txt }}</a>
+{%- assign proto = include.to | slice: 0, 4 -%}
+{%- if proto == "http" -%}
+    <a href="{{ include.to }}" target="_blank" rel="noopener">{{ include.text }}</a>
 {%- else -%}
-    {%- assign txt = include.to | split: "/" | last | split: "." | first -%}
-    <a class="redlink" href="{{ "/contributing.html" | relative_url }}">{{ include.text | default: txt }}</a>
+    {%- assign p = site.pages | where: "path", include.to | first -%}
+    {%- if p -%}
+        {%- if include.lowercase -%}
+            {%- assign default_txt = p.title | downcase -%}
+        {%- else -%}
+            {%- assign default_txt = p.title -%}
+        {%- endif -%}
+        <a href="{{ p.url | relative_url }}">{{ include.text | default: default_txt }}</a>
+    {%- else -%}
+        {%- assign txt = include.to | split: "/" | last | split: "." | first -%}
+        <a class="redlink" href="{{ "/contributing.html" | relative_url }}">{{ include.text | default: txt }}</a>
+    {%- endif -%}
 {%- endif -%}
