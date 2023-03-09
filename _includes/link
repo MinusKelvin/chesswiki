@@ -5,7 +5,7 @@
     {%- else -%}
         {%- assign default_txt = p.title -%}
     {%- endif -%}
-    [{{ include.text | default: default_txt }}]({{ p.url | relative_url }})
+    <a href="{{ p.url | relative_url }}">{{ include.text | default: default_txt }}</a>
 {%- else -%}
     {%- assign txt = include.to | split: "/" | last | split: "." | first -%}
     <a class="redlink" href="{{ "/contributing.html" | relative_url }}">{{ include.text | default: txt }}</a>

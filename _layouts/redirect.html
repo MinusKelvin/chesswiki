@@ -1,0 +1,14 @@
+---
+layout: page
+hidden: true
+---
+{%- assign p = site.pages | where: "path", page.redirect-page | first -%}
+<script>
+if (!new URL(window.location).searchParams.get("noredirect")) {
+    window.location.href = "{{ p.url | relative_url }}#{{ page.redirect-section }}";
+}
+</script>
+{{ page.content }}
+<p>
+This page is a redirect to <a href="{{ p.url | relative_url }}#{{ page.redirect-section }}">{{ p.title }}#{{ page.redirect-section }}</a>.
+</p>
