@@ -5,7 +5,7 @@ title: Minimax
 **Minimax** is the decision-making principle of minimizing the maximum possible loss, which in adversarial, deterministic, perfect-information, zero-sum games such as Chess is the {% include link to="https://en.wikipedia.org/wiki/Nash_equilibrium" text="Nash Equilibrium" %} (optimal play).
 Additionally, the zero-sum property allows for a simplification called [negamax](#negamax).
 
-# Description
+# Algorithm
 
 The basic algorithm involves two functions, one for the minimizing player (`min_player`) and one for the maximizing player (`max_player`).
 They differ only in whether they are looking for the move which minimizes the value or maximizes the value.
@@ -32,6 +32,15 @@ def max_player(state):
         best = max(best, value)
     return best
 ```
+
+## Theoretical Properties
+
+For adversarial, deterministic, perfect-information, zero-sum, finite games such as Chess, the algorithm produces optimal play.
+
+The minimax algorithm has a time complexity of $$O(b^d)$$ and a space complexity of either $$O(bd)$$ or $$O(d)$$ depending on implementation, where $$b$$ is the maximum branching factor and $$d$$ is the maximum depth of any line of play.
+
+Minimax is not optimally efficient; it searches more nodes than is necessary to guarantee the result.
+For this reason, {% include link to="content/alpha-beta.md" lowercase=true %} is preferred.
 
 # Negamax
 
