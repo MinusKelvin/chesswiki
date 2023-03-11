@@ -7,7 +7,7 @@ Additionally, the zero-sum property allows for a simplification called [negamax]
 
 # Algorithm
 
-The basic algorithm involves two functions, one for the minimizing player (`min_player`) and one for the maximizing player (`max_player`).
+The basic algorithm is a depth-first search involving two functions, one for the minimizing player (`min_player`) and one for the maximizing player (`max_player`).
 They differ only in whether they are looking for the move which minimizes the value or maximizes the value.
 Here, values are absolute ("win for white"), not relative ("win for current player").
 
@@ -131,3 +131,4 @@ def negamax(state):
 # See Also
 
 - {% include link to="content/alpha-beta.md" %}
+- {% include link to="content/iterated-deepening.md" %}

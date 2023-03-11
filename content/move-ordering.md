@@ -23,33 +23,45 @@ Depth | Minimax        | Random order  | Savings | Perfect order | Savings
     9 |  1,000,000,000 |     9,194,464 |   99.1% |       109,999 | 99.989%
    10 | 10,000,000,000 |    39,397,559 |   99.6% |       199,999 | 99.998%
 
+Even with random move ordering, alpha-beta searches a fraction of the nodes minimax does!
+
 # Heuristics
 
 Heuristics are used to guess which moves are more likely to cause a cutoff.
 
 ## General ordering
 
-The most important move ordering heuristic comes from the transposition table: the best move in a previous search of the position is likely to remain the best move in the current search.
-After that, 
+The most important move ordering heuristic is the {% include link to="redirect/hash-move.md" lowercase=true %}.
+The best move from a previous search of the position (in an {% include link to="content/iterated-deepening.md" lowercase=true %} framework) is retrieved from the transposition table and ordered first.
+The best move of the previous search is very likely (~90%) to remain the best move in the next search.
 
-- Move from the {% include link to="content/transposition-table.md" %}
-- Good captures
-- Quiets
-- Bad captures
+After that, moves are typically grouped according to move type, for example, ordering captures before non-captures or moves which give check before moves which do not give check.
+Techniques such as {% include link to="content/static-exchange-evaluation.md" lowercase=true %} (SEE) may be used to refine these groupings, such as distinguishing between captures that appear to lose material.
 
-The classification of captures as good or bad is typically done through {% include link to="content/static-exchange-evaluation.md" lowercase=true %} (SEE).
-In engines which do not use SEE, it is typical for all captures to be ordered before quiets.
+An example of how moves might be ordered in a Chess engine is:
+
+1. Move from the transposition table
+2. Captures
+3. Queen promotions
+4. Quiets
+5. Underpromotions
 
 ## Ordering captures
 
+These techniques are often used to order capturing moves, and are sometimes combined to resolve ties.
+
 - {% include link to="content/mvv-lva.md" %}
 - {% include link to="content/static-exchange-evaluation.md" %}
+- {% include link to="redirect/capture-history.md" %}
 
 ## Ordering quiets
+
+These techniques are often used to order quiet moves.
 
 - {% include link to="content/history-heuristic.md" %}
 - {% include link to="content/killer-move.md" %}
 - {% include link to="content/counter-move.md" %}
+- {% include link to="redirect/continuation-history.md" %}
 
 # See Also
 

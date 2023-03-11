@@ -9,13 +9,15 @@ Because of this, alpha-beta benefits greatly from good {% include link to="conte
 
 # Algorithm
 
-Alpha-beta is a recursive algorithm which augments the minimax search function with the additional parameters `alpha` ($$\alpha$$) and `beta` ($$\beta$$).
+Alpha-beta is a minimax search which is augmented with the additional parameters `alpha` ($$\alpha$$) and `beta` ($$\beta$$).
 These parameters represent the best values that the maximizing and minimizing players are known to have in some other line of play, respectively.
 When searching the root node of the game tree with alpha-beta, `alpha` and `beta` start at $$- \infty$$ and $$+ \infty$$ respectively.
 In a {% include link to="redirect/negamax.md" lowercase=true %} framework, the algorithm is implemented as:
 
 ```py
 def negamax_alpha_beta(state, alpha, beta):
+    if state.is_terminal():
+        return state.player_relative_terminal_value()
     best = -INF
     for move in state.generate_moves():
         next_state = state.play(move)
@@ -57,3 +59,4 @@ Alpha-beta is optimally efficient; there exists no algorithm guaranteed to retur
 # See Also
 
 - {% include link to="content/move-ordering.md" %}
+- {% include link to="content/iterated-deepening.md" %}
