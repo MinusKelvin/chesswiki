@@ -131,4 +131,4 @@ def negamax(state):
 # See Also
 
 - {% include link to="content/alpha-beta.md" %}
-- {% include link to="content/iterated-deepening.md" %}
+- {% include link to="content/iterative-deepening.md" %}

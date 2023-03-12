@@ -9,6 +9,7 @@ This wiki is dedicated to the documentation of all aspects of chess engine devel
 Contributions are greatly appreciated.
 See {% include link to="meta/contributing.md" %} for more information.
 
-# Search Algorithms
+# Fundamentals
 
 - {% include link to="content/alpha-beta.md" %}
+- {% include link to="content/iterative-deepening.md" %}

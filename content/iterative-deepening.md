@@ -1,15 +1,15 @@
 ---
-title: Iterated Deepening
+title: Iterative Deepening
 ---
 
-**Iterated deepening** is a technique in which [depth-limited searches](#depth-limited-search) are performed at successively greater depths.
+**Iterative deepening** is a technique in which [depth-limited searches](#depth-limited-search) are performed at successively greater depths.
 This introduces non-terminal leaf nodes to the search, which are assigned a value using an evaluation function.
 In Chess engines, this is used to transform the underlying depth-first search algorithm into an anytime algorithm, which quickly obtains an estimate of the value and uses the remaining time to refine the estimate.
 
 # Algorithm
 
 ```py
-def iterated_deepening(state):
+def iterative_deepening(state):
     depth = 1
     while not should_stop():
         value = depth_limited_search(state, depth)
@@ -21,7 +21,7 @@ The `depth_limited_search` function is a depth-limited form of any depth-first s
 
 ## Theoretical Properties
 
-The time complexity of an iterated deepening search to depth $$d$$ is $$O(b^d)$$ (where $$b$$ is the maximum branching factor of the search), the same as the time complexity of a depth-limited search to depth $$d$$.
+The time complexity of an iterative deepening search to depth $$d$$ is $$O(b^d)$$ (where $$b$$ is the maximum branching factor of the search), the same as the time complexity of a depth-limited search to depth $$d$$.
 While the work done by a depth $$d$$ iterative deepening search can be characterized as $$b^1 + b^2 + \cdots + b^{d-1} + b^d$$, the $$b^d$$ term dominates the others, resulting in the same asymptotic time complexity.
 
 # Depth-limited Search
@@ -43,9 +43,9 @@ def depth_limited_negamax(state, depth):
     return best
 ```
 
-# Advantages of Iterated Deepening
+# Advantages of Iterative Deepening
 
-Counterintuitively, in sophisticated alpha-beta searches it is often faster to perform iterated deepening to some depth $$d$$ than to simply run a depth-limited search to depth $$d$$.
+Counterintuitively, in sophisticated alpha-beta searches it is often faster to perform iterative deepening to some depth $$d$$ than to simply run a depth-limited search to depth $$d$$.
 This is due to the use of dynamic {% include link to="content/move-ordering.md" lowercase=true %} techniques which benefit from the searches of the previous iterations.
 
 TODO: perform experiment

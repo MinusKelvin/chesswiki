@@ -32,7 +32,7 @@ Heuristics are used to guess which moves are more likely to cause a cutoff.
 ## General ordering
 
 The most important move ordering heuristic is the {% include link to="redirect/hash-move.md" lowercase=true %}.
-The best move from a previous search of the position (in an {% include link to="content/iterated-deepening.md" lowercase=true %} framework) is retrieved from the transposition table and ordered first.
+The best move from a previous search of the position (in an {% include link to="content/iterative-deepening.md" lowercase=true %} framework) is retrieved from the transposition table and ordered first.
 The best move of the previous search is very likely (~90%) to remain the best move in the next search.
 
 After that, moves are typically grouped according to move type, for example, ordering captures before non-captures or moves which give check before moves which do not give check.

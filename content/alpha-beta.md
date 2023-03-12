@@ -59,4 +59,4 @@ Alpha-beta is optimally efficient; there exists no algorithm guaranteed to retur
 # See Also
 
 - {% include link to="content/move-ordering.md" %}
-- {% include link to="content/iterated-deepening.md" %}
+- {% include link to="content/iterative-deepening.md" %}
