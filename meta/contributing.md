@@ -16,7 +16,7 @@ This wiki is hosted on {% include link to="https://pages.github.com/" text="GitH
 # Creating pages
 
 Pages can be created by creating a markdown file (`.md`) in the `content/` directory.
-The file should start with [front matter][jekyll-fm]:
+The file should start with {% include link to="https://jekyllrb.com/docs/front-matter/" text="font matter" %}:
 
 ```yaml
 ---
